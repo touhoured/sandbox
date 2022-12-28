@@ -26,3 +26,4 @@ jobs:
           env:
             latest: ${{ steps.tag.outputs.latestTag }}
             previous: ${{ steps.jinos.outputs.previousTag }}
+          run: echo $latest $previous
