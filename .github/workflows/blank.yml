@@ -21,6 +21,7 @@ jobs:
             DAY: "${{ steps.current-time.outputs.day }}"
           run: echo $TIME $R_TIME $F_TIME $YEAR $DAY
         - name: Get tag
+          id: tag
           uses: JinoArch/get-latest-tag@latest
         - name: Show tag
           env:
