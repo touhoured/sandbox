@@ -20,3 +20,9 @@ jobs:
             YEAR: "${{ steps.current-time.outputs.year }}"
             DAY: "${{ steps.current-time.outputs.day }}"
           run: echo $TIME $R_TIME $F_TIME $YEAR $DAY
+        - name: Get tag
+          uses: JinoArch/get-latest-tag@latest
+        - name: Show tag
+          env:
+            latest: ${{ steps.tag.outputs.latestTag }}
+            previous: ${{ steps.jinos.outputs.previousTag }}
