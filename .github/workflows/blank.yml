@@ -4,8 +4,20 @@ on:
   push:
 
 jobs:
+  build-windows:
+    name: build-windows-${{ matrix.target }}
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        target:
+          - i686-pc-windows-msvc
+          - i686-pc-windows-gnu
+
+    steps:
+      - name: test
+        run: echo done
   build-linux:
-    name: build-${{ matrix.target }}
+    name: build-linux-${{ matrix.target }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -23,6 +35,7 @@ jobs:
     steps:
       - name: test
         run: echo done
+
   shell:
       runs-on: ubuntu-latest
       steps:
