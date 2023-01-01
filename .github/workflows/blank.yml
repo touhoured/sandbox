@@ -7,6 +7,13 @@ jobs:
   build:
       runs-on: ubuntu-latest
       steps:
+        - name: test env and gh and curl and jq
+          env:
+            UPSTREAM_FULL_NAME: $(gh api repos/${GITHUB_REPOSITORY} --jq '.parent.full_name')
+          run: |
+            echo ${UPSTREAM_FULL_NAME}
+            gh api repos/${GITHUB_REPOSITORY} --jq '.parent.full_name'
+            curl https://api.github.com/repos/touhoured/geph4-client | jq -r '.parent.full_name' | xargs echo full name: 
         - name: Get current time
           uses: josStorer/get-current-time@v2.0.2
           id: current-time
