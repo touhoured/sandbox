@@ -5,7 +5,12 @@ on:
 
 jobs:
   shell2:
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - windows-latest
+          - ubuntu-latest
     steps:
       - name: test git
         run: echo "tag_name=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
