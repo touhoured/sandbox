@@ -13,7 +13,9 @@ jobs:
           - ubuntu-latest
     steps:
       - name: test git
-        run: echo "tag_name=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+        run: |
+          pwd
+          echo "tag_name=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
       - name: show tag
         env:
           tag: ${{ env.tag_name }}
