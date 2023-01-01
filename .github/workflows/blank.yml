@@ -4,6 +4,17 @@ on:
   push:
 
 jobs:
+  shell2:
+    runs-on: windows-latest
+    steps:
+      - name: test git
+        run: echo "tag_name=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+      - name: show tag
+        env:
+          tag: ${{ env.tag_name }}
+        run: echo $tag
+    
+
   build-windows:
     name: build-windows-${{ matrix.target }}
     runs-on: windows-latest
