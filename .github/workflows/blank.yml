@@ -17,6 +17,8 @@ jobs:
         run: |
           pwd
           echo "tag_name=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+        shell: bash
+
       - name: show tag
         env:
           tag: ${{ env.tag_name }}
