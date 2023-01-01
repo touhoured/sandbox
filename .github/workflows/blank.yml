@@ -20,6 +20,9 @@ jobs:
 
           - target: aarch64-linux-android
             use-cross: true
+    steps:
+      - name: test
+        run: echo done
   shell:
       runs-on: ubuntu-latest
       steps:
