@@ -4,7 +4,23 @@ on:
   push:
 
 jobs:
-  build:
+  build-linux:
+    name: build-${{ matrix.target }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:
+          - x86_64-unknown-linux-gnu
+          - x86_64-unknown-linux-musl
+          - aarch64-unknown-linux-musl
+          - aarch64-linux-android
+        include:
+          - target: aarch64-unknown-linux-musl
+            use-cross: true
+
+          - target: aarch64-linux-android
+            use-cross: true
+  shell:
       runs-on: ubuntu-latest
       steps:
         - name: test env and gh and curl and jq
