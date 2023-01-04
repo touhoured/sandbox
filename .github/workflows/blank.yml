@@ -23,7 +23,12 @@ jobs:
     steps:
       - name: test Android NDK
         run: |
+          set
           echo $ANDROID_NDK
+      - name: test Android NDK 2
+        run: |
+          Get-ChildItem Env:
+          echo $Env:ANDROID_NDK
       - uses: actions/checkout@v2.6.0
       - name: test git
         run: |
