@@ -24,6 +24,10 @@ env:
   test2: test2
 
 jobs:
+  testif:
+    name: test if
+    if: inputs.string == "*test"
+    run: echo match!
   log-the-inputs:
     runs-on: ubuntu-latest
     steps:
