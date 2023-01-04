@@ -18,6 +18,10 @@ on:
         description: 'strang'
         default: 'false'
         type: string
+      string2:
+        description: 'strang'
+        default: 'false'
+        type: string
 
 env:
   test1: test1
@@ -26,7 +30,7 @@ env:
 jobs:
   log-the-inputs:
     runs-on: ubuntu-latest
-    if: ${{ inputs.string == 'true' }}
+    if: ${{ inputs.string == 'true' || inputs.string2 == 'true' }}
     steps:
       - run: |
           echo "Log level: $LEVEL"
