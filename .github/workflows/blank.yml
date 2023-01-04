@@ -15,7 +15,9 @@ on:
         description: "input"
         required: false
         type: string
-
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
 
 jobs:
   shell2:
