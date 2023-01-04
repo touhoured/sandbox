@@ -21,6 +21,9 @@ jobs:
           - windows-latest
           - ubuntu-latest
     steps:
+      - name: test Android NDK
+        run: |
+          echo $ANDROID_NDK
       - uses: actions/checkout@v2.6.0
       - name: test git
         run: |
