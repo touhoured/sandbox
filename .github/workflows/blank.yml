@@ -1,5 +1,6 @@
 name: CI
 on:
+  push:
   workflow_dispatch:
     inputs:
       logLevel:
@@ -23,12 +24,11 @@ env:
   test2: test2
 
 jobs:
-
   shell:
       runs-on: ubuntu-latest
       steps:
         - name: test if
-          if: inputs.string == "*test"
+          if: $[[ inputs.string == *test ]]
           run: echo match!
         - name: test env and gh and curl and jq
           env:
