@@ -11,9 +11,12 @@ on:
         description: "Disable sync"
         required: false
         type: boolean
+env:
+  test1: me
 
 jobs:
   shell2:
+    if: test1 == 'me'
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
