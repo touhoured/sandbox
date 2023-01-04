@@ -26,6 +26,7 @@ env:
 jobs:
   log-the-inputs:
     runs-on: ubuntu-latest
+    if: ${{ inputs.string }}
     steps:
       - run: |
           echo "Log level: $LEVEL"
