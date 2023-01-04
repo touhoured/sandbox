@@ -38,7 +38,7 @@ jobs:
 
   shell2:
     runs-on: ${{ matrix.os }}
-    if: ${{ inputs.string == matrix.os || inputs.string == null }}
+    if: ${{ inputs.string == ${{ matrix.os }} || inputs.string == null }}
     strategy:
       matrix:
         os:
