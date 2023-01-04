@@ -73,7 +73,6 @@ jobs:
 
   matrixTest:
     runs-on: ${{ matrix.os }}
-    if: ${{ inputs.string == ${{ matrix.os }} || inputs.string == null }}
     strategy:
       matrix:
         os:
