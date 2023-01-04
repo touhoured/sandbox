@@ -4,7 +4,6 @@ on:
     inputs:
       logLevel:
         description: 'Log level'
-        required: true
         default: 'warning'
         type: choice
         options:
@@ -13,9 +12,12 @@ on:
         - debug
       tags:
         description: 'Test scenario tags'
-        required: false
+        default: 'true'
         type: boolean
-
+      string:
+        description: 'strang'
+        default: 'str'
+        type: string
 
 env:
   test1: test1
