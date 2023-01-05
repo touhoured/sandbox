@@ -35,7 +35,7 @@ jobs:
       - name: test git describe
         run: git describe --tags
       - name: test if
-        if: $[[ inputs.string == *test ]]
+#        if: $[[ inputs.string == *test ]]
         run: echo match!
       - name: test env and gh and curl and jq
         env:
