@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: geph-official/geph4-client
-          ref: v1.0.1
+          ref: master
       - name: test git describe
         run: git describe --tags
       - name: test if
