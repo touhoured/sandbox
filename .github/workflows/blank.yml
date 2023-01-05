@@ -27,37 +27,44 @@ jobs:
   shell:
       runs-on: ubuntu-latest
       steps:
-        - name: test if
-          if: $[[ inputs.string == *test ]]
-          run: echo match!
-        - name: test env and gh and curl and jq
-          env:
-            UPSTREAM_FULL_NAME: $(gh api repos/${GITHUB_REPOSITORY} --jq '.parent.full_name')
-          run: |
-            echo ${UPSTREAM_FULL_NAME}
-            # gh api repos/${GITHUB_REPOSITORY} --jq '.parent.full_name'
-            curl https://api.github.com/repos/touhoured/geph4-client | jq -r '.parent.full_name' | xargs echo full name: 
-        - name: Get current time
-          uses: josStorer/get-current-time@v2.0.2
-          id: current-time
-          with:
-            format: YYYYMMDD
-        - name: Use current time
-          env:
-            TIME: "${{ steps.current-time.outputs.time }}"
-            R_TIME: "${{ steps.current-time.outputs.readableTime }}"
-            F_TIME: "${{ steps.current-time.outputs.formattedTime }}"
-            YEAR: "${{ steps.current-time.outputs.year }}"
-            DAY: "${{ steps.current-time.outputs.day }}"
-          run: echo $TIME $R_TIME $F_TIME $YEAR $DAY
-        - name: Get tag
-          id: tag
-          uses: JinoArch/get-latest-tag@latest
-        - name: Show tag
-          env:
-            latest: ${{ steps.tag.outputs.latestTag }}
-            previous: ${{ steps.jinos.outputs.previousTag }}
-          run: echo $latest $previous
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: geph-official/geph4-client
+          ref: v1.0.0
+      - name: test git describe
+        run: git describe --tags
+      - name: test if
+        if: $[[ inputs.string == *test ]]
+        run: echo match!
+      - name: test env and gh and curl and jq
+        env:
+          UPSTREAM_FULL_NAME: $(gh api repos/${GITHUB_REPOSITORY} --jq '.parent.full_name')
+        run: |
+          echo ${UPSTREAM_FULL_NAME}
+          # gh api repos/${GITHUB_REPOSITORY} --jq '.parent.full_name'
+          curl https://api.github.com/repos/touhoured/geph4-client | jq -r '.parent.full_name' | xargs echo full name: 
+      - name: Get current time
+        uses: josStorer/get-current-time@v2.0.2
+        id: current-time
+        with:
+          format: YYYYMMDD
+      - name: Use current time
+        env:
+          TIME: "${{ steps.current-time.outputs.time }}"
+          R_TIME: "${{ steps.current-time.outputs.readableTime }}"
+          F_TIME: "${{ steps.current-time.outputs.formattedTime }}"
+          YEAR: "${{ steps.current-time.outputs.year }}"
+          DAY: "${{ steps.current-time.outputs.day }}"
+        run: echo $TIME $R_TIME $F_TIME $YEAR $DAY
+      - name: Get tag
+        id: tag
+        uses: JinoArch/get-latest-tag@latest
+      - name: Show tag
+        env:
+          latest: ${{ steps.tag.outputs.latestTag }}
+          previous: ${{ steps.jinos.outputs.previousTag }}
+        run: echo $latest $previous
 
   log-the-inputs:
     runs-on: ubuntu-latest
