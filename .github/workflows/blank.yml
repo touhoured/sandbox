@@ -15,3 +15,4 @@ jobs:
         with:
           tag: archive-${{ steps.date.outputs.date }}
           artifacts: README.md
+          allowUpdates: true
