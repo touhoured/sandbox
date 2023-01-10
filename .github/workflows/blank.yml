@@ -2,36 +2,13 @@ name: CI
 on:
   push:
   workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-        default: 'warning'
-        type: choice
-        options:
-        - info
-        - warning
-        - debug
-      tags:
-        description: 'Test scenario tags'
-        default: 'true'
-        type: boolean
-      string:
-        description: 'strang'
-        default: 'false'
-        type: string
-env:
-  test1: test1
-  test2: test2
-
 jobs:
   shell:
       runs-on: ubuntu-latest
       steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - uses: ncipollo/release-action@v1
         with:
-          repository: geph-official/geph4-client
-          ref: master
-          fetch-depth: 0
-      - name: test git describe
-        run: git describe --tags
+          artifacts: README.md
+
