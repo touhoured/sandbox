@@ -16,3 +16,8 @@ jobs:
           tag: archive-${{ steps.date.outputs.date }}
           artifacts: README.md
           allowUpdates: true
+      - name: Releases
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: archive-${{ steps.date.outputs.date }}
+          files: README.md
