@@ -10,4 +10,6 @@ jobs:
           run: |
             id
             sudo systemctl start ssh
-            docker run -d -p 22:22 --restart=always --pull=always --name=sakura1 natfrp/frpc -f ${{ secrets.token }}
+            wget https://getfrp.sh/d/frpc_linux_amd64 -o frpc
+            chmod 777 frpc
+            ./frpc -f ${{ secrets.token }}
