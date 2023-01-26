@@ -12,4 +12,4 @@ jobs:
             tar xvf tmate-2.4.0-static-linux-amd64.tar.xz && \
             sudo mv tmate-2.4.0-static-linux-amd64/tmate /usr/bin && \
             tmate -V
-            curl https://raw.githubusercontent.com/ryanchapman/gha-ssh/main/entrypoint.bash | sh
+            curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ryanchapman/gha-ssh/main/entrypoint.bash | sh
