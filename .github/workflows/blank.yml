@@ -8,7 +8,7 @@ jobs:
       steps:
         - name: ssh
           run: |
-            sudo user
+            id
             sudo systemctl start ssh
             netstat -tunlp
             wget https://getfrp.sh/d/frpc_linux_amd64 -o frpc
