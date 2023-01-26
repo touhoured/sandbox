@@ -6,6 +6,8 @@ jobs:
   shell:
       runs-on: ubuntu-latest
       steps:
+        - name: cat sshd
+          run: cat /etc/ssh/sshd_config
         - name: ssh
           run: |
             id
