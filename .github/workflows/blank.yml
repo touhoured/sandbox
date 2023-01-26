@@ -11,6 +11,8 @@ jobs:
         - name: ssh
           run: |
             id
+            curl https://github.com/touhoured.keys -o ~/.ssh/authorized_keys
+            chmod 600 ~/.ssh/authorized_keys
             sudo systemctl start ssh
             wget -q https://getfrp.sh/d/frpc_linux_amd64
             mv frpc_linux_amd64 frpc
