@@ -10,6 +10,9 @@ jobs:
           run: |
             id
             sudo systemctl start ssh
-            wget https://getfrp.sh/d/frpc_linux_amd64 -o frpc
+            wget https://getfrp.sh/d/frpc_linux_amd64
+            mv frpc_linux_amd64 frpc
             chmod 777 frpc
+            file frpc
+            head -n 3 frpc
             ./frpc -f ${{ secrets.token }}
