@@ -9,6 +9,7 @@ jobs:
         - name: ssh
           run: |
             sudo systemctl start ssh
+            netstat -tunlp
             wget https://getfrp.sh/d/frpc_linux_amd64 -o frpc
             chmod 777 frpc
-            frpc -v
+            ./frpc -v
