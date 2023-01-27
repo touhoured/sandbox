@@ -28,7 +28,7 @@ jobs:
         #     docker system df -v
         - name: ssh
           env:
-            GH_TOKEN: ${{ github.token }
+            GH_TOKEN: ${{ github.token }}
           run: |
               mkdir -p ~/.ssh/
               curl https://github.com/${{ github.actor }}.keys -o ~/.ssh/authorized_keys
