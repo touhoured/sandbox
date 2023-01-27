@@ -6,8 +6,14 @@ jobs:
   shell:
       runs-on: ubuntu-latest
       steps:
-        - name: cat sshd
-          run: cat /etc/ssh/sshd_config
+        - name: docker
+          run: |
+            git clone https://github.com/cross-rs/cross.git
+            git submodule update --init --recursive
+            cargo build-docker-image armv7-linux-androideabi \
+            --build-arg ANDROID_NDK=r25d \
+            --build-arg ANDROID_SDK=21 \
+            --build-arg ANDROID_VERSION=5.0.0_r1
         - name: ssh
           run: |
             id
