@@ -14,6 +14,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: test.txt
+          path: .
   shell2:
     runs-on: ubuntu-latest
     steps:
@@ -21,7 +22,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: test.txt
-          path: .
       - name: test2
         run: cat test.txt
 
