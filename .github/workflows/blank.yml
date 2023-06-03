@@ -21,6 +21,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: test.txt
+          path: .
       - name: test2
         run: cat test.txt
 
