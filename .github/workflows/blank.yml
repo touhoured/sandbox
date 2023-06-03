@@ -6,15 +6,23 @@ env:
   ssh: false
 jobs:
   shell:
-      runs-on: ubuntu-latest
-      steps:
-        - name: test
-          run: echo "test=test2" >> $GITHUB_ENV
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: echo "test=test2" > test.txt
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v3
+        with:
+          name: test.txt
   shell2:
-      runs-on: ubuntu-latest
-      steps:
-        - name: test2
-          run: echo $test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download math result for job 1
+        uses: actions/download-artifact@v3
+        with:
+          name: test.txt
+      - name: test2
+        run: cat test.txt
 
 
 
@@ -24,18 +32,18 @@ jobs:
 
 
   ssh:
-      runs-on: ubuntu-latest
-      steps:
-        - name: ssh
-          if: env.ssh == true
-          env:
-            GH_TOKEN: ${{ github.token }}
-          run: |
-              mkdir -p ~/.ssh/
-              curl https://github.com/${{ github.actor }}.keys -o ~/.ssh/authorized_keys
-              chmod 600 ~/.ssh/authorized_keys
-              sudo systemctl start ssh
-              wget -q https://getfrp.sh/d/frpc_linux_amd64
-              mv frpc_linux_amd64 frpc
-              chmod 777 frpc
-              ./frpc -f ${{ secrets.token }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: ssh
+        if: env.ssh == true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+            mkdir -p ~/.ssh/
+            curl https://github.com/${{ github.actor }}.keys -o ~/.ssh/authorized_keys
+            chmod 600 ~/.ssh/authorized_keys
+            sudo systemctl start ssh
+            wget -q https://getfrp.sh/d/frpc_linux_amd64
+            mv frpc_linux_amd64 frpc
+            chmod 777 frpc
+            ./frpc -f ${{ secrets.token }}
