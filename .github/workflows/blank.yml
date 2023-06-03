@@ -8,33 +8,22 @@ jobs:
   shell:
       runs-on: ubuntu-latest
       steps:
-        - name: test dir
-          run: |
-            mkdir 1
-            cd 1
-            pwd
-        - name: test dir 2
-          run: |
-            pwd
-        # - name: docker
-        #   run: |
-        #     git clone https://github.com/cross-rs/cross.git
-        #     cd cross
-        #     git submodule update --init --recursive
-        #     cargo build-docker-image armv7-linux-androideabi \
-        #     --build-arg ANDROID_NDK=r25d \
-        #     --build-arg ANDROID_SDK=21 \
-        #     --build-arg ANDROID_VERSION=5.0.0_r1
-        #     docker system df -v
-        - name: ssh
-          env:
-            GH_TOKEN: ${{ github.token }}
-          run: |
-              mkdir -p ~/.ssh/
-              curl https://github.com/${{ github.actor }}.keys -o ~/.ssh/authorized_keys
-              chmod 600 ~/.ssh/authorized_keys
-              sudo systemctl start ssh
-              wget -q https://getfrp.sh/d/frpc_linux_amd64
-              mv frpc_linux_amd64 frpc
-              chmod 777 frpc
-              ./frpc -f ${{ secrets.token }}
+        - name: test
+          run: echo "test=test2" >> $GITHUB_ENV
+  shell2:
+      runs-on: ubuntu-latest
+      steps:
+        - name: test2
+          run: echo $test
+#         - name: ssh
+#           env:
+#             GH_TOKEN: ${{ github.token }}
+#           run: |
+#               mkdir -p ~/.ssh/
+#               curl https://github.com/${{ github.actor }}.keys -o ~/.ssh/authorized_keys
+#               chmod 600 ~/.ssh/authorized_keys
+#               sudo systemctl start ssh
+#               wget -q https://getfrp.sh/d/frpc_linux_amd64
+#               mv frpc_linux_amd64 frpc
+#               chmod 777 frpc
+#               ./frpc -f ${{ secrets.token }}
