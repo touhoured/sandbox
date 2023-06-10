@@ -9,7 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test
-        run: echo "test=test2" > test.txt
+        run: |
+          echo "test=test2" > test.txt
+          echo "test2=test3" >> test.txt
       - name: Upload math result for job 1
         uses: actions/upload-artifact@v3
         with:
