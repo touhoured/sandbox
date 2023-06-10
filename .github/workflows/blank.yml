@@ -15,9 +15,12 @@ jobs:
       - name: Upload math result for job 1
         uses: actions/upload-artifact@v3
         with:
-          name: |
-            test.txt
-            test2.txt
+          name: test.txt
+          path: .
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v3
+        with:
+          name: test2.txt
           path: .
   shell2:
     runs-on: ubuntu-latest
