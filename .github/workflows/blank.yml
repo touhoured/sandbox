@@ -24,12 +24,13 @@ jobs:
           path: .
   shell2:
     runs-on: ubuntu-latest
+    needs: shell
     steps:
       - name: Download math result for job 1
         uses: actions/download-artifact@v3
         with:
           name: test.txt
-      - name: test2
+      - name: test
         run: cat test.txt
 
 
