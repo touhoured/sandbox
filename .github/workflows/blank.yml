@@ -10,29 +10,7 @@ jobs:
     steps:
       - name: test
         run: |
-          echo "test=test" > test.txt
-          echo "test2=test2" > test2.txt
-      - name: Upload math result for job 1
-        uses: actions/upload-artifact@v3
-        with:
-          name: test.txt
-          path: .
-      - name: Upload math result for job 1
-        uses: actions/upload-artifact@v3
-        with:
-          name: test2.txt
-          path: .
-  shell2:
-    runs-on: ubuntu-latest
-    needs: shell
-    steps:
-      - name: Download math result for job 1
-        uses: actions/download-artifact@v3
-        with:
-          name: test.txt
-      - name: test
-        run: cat test.txt
-
+          find / -name apksginer
 
 
 
