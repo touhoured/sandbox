@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: test
         run: |
-          sudo find / -name apksginer
+          sudo find / -name "*android*"
 
 
 
