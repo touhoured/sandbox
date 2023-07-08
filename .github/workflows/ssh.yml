@@ -8,17 +8,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - run: sleep 10
-#       - name: ssh
-#         env:
-#           GH_TOKEN: ${{ github.token }}
-#         run: |
+
+#       - run: |
 #             mkdir -p ~/.ssh/
 #             curl https://github.com/${{ github.actor }}.keys -o ~/.ssh/authorized_keys
 #             chmod 600 ~/.ssh/authorized_keys
 #             sudo systemctl start ssh
-#             sudo apt install tmate
-#             tmate -F
+
+        - run: |
+            sudo apt install tmate
+            tmate -F
+
 
 #         - uses: valeriangalliat/action-sshd-cloudflared@v1
+
 #         - uses: mxschmitt/action-tmate@v3
-        - uses: lhotari/action-upterm@v1
+
+#         - uses: lhotari/action-upterm@v1
