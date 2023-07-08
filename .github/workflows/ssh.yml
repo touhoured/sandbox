@@ -7,7 +7,7 @@ jobs:
   ssh:
     runs-on: ubuntu-latest
     steps:
-        - run: sleep 30
+        - run: sleep 10
 #       - name: ssh
 #         env:
 #           GH_TOKEN: ${{ github.token }}
@@ -20,5 +20,5 @@ jobs:
 #             tmate -F
 
 #         - uses: valeriangalliat/action-sshd-cloudflared@v1
-        - uses: mxschmitt/action-tmate@v3
-#         - uses: lhotari/action-upterm@v1
+#         - uses: mxschmitt/action-tmate@v3
+        - uses: lhotari/action-upterm@v1
