@@ -14,7 +14,5 @@ jobs:
             mkdir -p ~/.ssh/
             curl https://github.com/${{ github.actor }}.keys -o ~/.ssh/authorized_keys
             chmod 600 ~/.ssh/authorized_keys
-            sudo apt install tmate upterm
-            tmate
-            upterm
-            sleep inf
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
