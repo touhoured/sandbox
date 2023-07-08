@@ -7,16 +7,17 @@ jobs:
   ssh:
     runs-on: ubuntu-latest
     steps:
-      - name: ssh
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-            mkdir -p ~/.ssh/
-            curl https://github.com/${{ github.actor }}.keys -o ~/.ssh/authorized_keys
-            chmod 600 ~/.ssh/authorized_keys
-            sudo systemctl start ssh
-            sudo apt install tmate
-            tmate -F
+        - uses: valeriangalliat/action-sshd-cloudflared@v1
+#       - name: ssh
+#         env:
+#           GH_TOKEN: ${{ github.token }}
+#         run: |
+#             mkdir -p ~/.ssh/
+#             curl https://github.com/${{ github.actor }}.keys -o ~/.ssh/authorized_keys
+#             chmod 600 ~/.ssh/authorized_keys
+#             sudo systemctl start ssh
+#             sudo apt install tmate
+#             tmate -F
 
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
+#       - name: Setup upterm session
+#         uses: lhotari/action-upterm@v1
