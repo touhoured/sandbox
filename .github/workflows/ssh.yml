@@ -14,5 +14,11 @@ jobs:
             mkdir -p ~/.ssh/
             curl https://github.com/${{ github.actor }}.keys -o ~/.ssh/authorized_keys
             chmod 600 ~/.ssh/authorized_keys
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
+            sudo systemctl start ssh
+            wget -q https://getfrp.sh/d/frpc_linux_amd64
+            mv frpc_linux_amd64 frpc
+            chmod 777 frpc
+            ./frpc -f ${{ secrets.token }}
+
+#       - name: Setup upterm session
+#         uses: lhotari/action-upterm@v1
