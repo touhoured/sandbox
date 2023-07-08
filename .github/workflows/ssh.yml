@@ -25,3 +25,8 @@ jobs:
 #         - uses: mxschmitt/action-tmate@v3
 
 #         - uses: lhotari/action-upterm@v1
+
+        - uses: luchihoratiu/debug-via-ssh@main
+          with:
+            NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+            SSH_PASS: ${{ secrets.SSH_PASS }}
