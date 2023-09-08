@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: test
         if: |
-          (env.a || env.b || env.c || ) == 'y' &&
+          (env.a || env.b || env.c ) == 'y' &&
           env.d == 'y'
         run: |
           uname -a
