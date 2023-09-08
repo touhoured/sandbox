@@ -6,9 +6,9 @@ on:
 jobs:
   shell:
     runs-on: ubuntu-latest
-    if: |
-      'a' == 'c' || 'b' == 'c' || 'c' == 'c' && 'd' == 'd'
     steps:
       - name: test
+        if: |
+          'a' == 'c' || 'b' == 'c' || 'c' == 'd' && 'd' == 'd'
         run: |
           uname -a
