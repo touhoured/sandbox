@@ -3,11 +3,17 @@ on:
   push:
   workflow_dispatch:
 
+env:
+  a: a
+  b: b
+  c: c
+  d: d
+
 jobs:
   shell:
     runs-on: ubuntu-latest
+    if: env.a || env.b || env.c == 'c' && env.d == 'd'
     steps:
       - name: test
         run: |
-          sudo find / -name "*android*"
-
+          uname -a
