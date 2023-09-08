@@ -12,7 +12,8 @@ env:
 jobs:
   shell:
     runs-on: ubuntu-latest
-    if: env.a || env.b || env.c == 'c' && env.d == 'd'
+    if: |
+      env.a || env.b || env.c == 'c'
     steps:
       - name: test
         run: |
