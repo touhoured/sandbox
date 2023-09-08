@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
 
 env:
-  a: a
-  b: b
-  c: c
-  d: d
+  a: n
+  b: y
+  c: n
+  d: y
 
 jobs:
   shell:
@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: test
         if: |
-          (env.a == env.b == env.c == 'c') &&
-          env.d == 'd'
+          (env.a || env.b || env.c || ) == 'y' &&
+          env.d == 'y'
         run: |
           uname -a
