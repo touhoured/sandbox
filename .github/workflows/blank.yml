@@ -15,8 +15,7 @@ jobs:
     if: |
       env.a == 'c' ||
       env.b == 'c' ||
-      env.c == 'c' &&
-      env.d == 'd'
+      env.c == 'c'
     steps:
       - name: test
         run: |
