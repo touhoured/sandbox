@@ -3,12 +3,18 @@ on:
   push:
   workflow_dispatch:
 
+env:
+  a: a
+  b: b
+  c: c
+  d: d
+
 jobs:
   shell:
     runs-on: ubuntu-latest
-    if: |
-      'a' || 'b' || 'c' == 'a' && 'd' == 'd'
     steps:
       - name: test
+        if: |
+          'a' || 'b' || 'c' == 'a'
         run: |
           uname -a
