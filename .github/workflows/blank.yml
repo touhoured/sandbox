@@ -20,6 +20,6 @@ jobs:
           env.b == 'b' ||
           env.c == 'e'
           ) &&
-          env.d == 'd'
+          env.d == 'c'
         run: |
           uname -a
