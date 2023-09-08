@@ -13,7 +13,10 @@ jobs:
   shell:
     runs-on: ubuntu-latest
     if: |
-      env.a || env.b || env.c == 'c'
+      env.a == 'c' ||
+      env.b == 'c' ||
+      env.c == 'c' &&
+      env.d == 'd'
     steps:
       - name: test
         run: |
