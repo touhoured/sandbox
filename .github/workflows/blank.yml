@@ -3,19 +3,13 @@ on:
   push:
   workflow_dispatch:
 
-env:
-  a: n
-  b: y
-  c: n
-  d: y
-
 jobs:
   shell:
     runs-on: ubuntu-latest
     steps:
       - name: test
-        if: |
-          (env.a || env.b || env.c ) == 'y' &&
-          env.d == 'y'
         run: |
-          uname -a
+          git clone https://gitlab.com/qemu-project/qemu/ -b v7.0.0 --depth 1 --recursive
+      - uses: actions/upload-artifact@v3
+        with:
+          path: qemu
