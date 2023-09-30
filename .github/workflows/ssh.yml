@@ -14,9 +14,8 @@ jobs:
           mkdir -p ~/.ssh/
           curl https://github.com/${{ github.actor }}.keys -o ~/.ssh/authorized_keys
           chmod 600 ~/.ssh/authorized_keys
-          echo "c2VydmVvLm5ldCwxMzguNjguNzkuOTUgc3NoLXJzYSBBQUFBQjNOemFDMXljMkVBQUFBREFRQUJBQUFCQVFEeFlHcVNLVndKcFFEMUYwWUloeitiZDVscGw3WWVzS2p0cm4xUUQxUmpRY1NqNzI0bEpkQ3dsdjRKOFBjTHVGRnRsQUE4QWJHUWp1N3FXZE1OOWloZEh2UmNXZjB0U2paK2J6d1lreGFDeWRxNEpuQ3JidkxKUHdMRmFxVjFOZGNPelkyTlZMdVg1Q2ZZOFZUSHJwczQ5TG5PMFFwR2FhdnFyYmsrd1RXREQ5TUhrbE5mSjF6U0ZwUUFrU1FuU05TWWkvTTJKM2hYN1AwRzJSN2RzVXZOb3YrVWdOS3BjNG45K0xxNVZtY3FqcW8yS2hGeUhQME5zZURMcGdqYXFHSnEyS3ZpdDNRb3docVprSzRLNzdBQTY1Q3haamREZnBqd1pTdVgwNzVGOXZOaTBJRnBGa0dKVzlLbHJYekk0bEl6U0FqUFpCVVJoVWI4blpTaVB1emoNCg==" | base64 -d > ~/.ssh/known_hosts
           sudo systemctl start ssh
-          ssh -t -t -R touhoured:22:localhost:22 serveo.net
+          ssh -o StrictHostKeyChecking=no -t -t -R touhoured:22:localhost:22 serveo.net
       - name: wait
         run: |
           sleep inf
