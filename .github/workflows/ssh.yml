@@ -16,7 +16,7 @@ jobs:
           chmod 600 ~/.ssh/authorized_keys
           sudo systemctl start ssh
           # ssh -o StrictHostKeyChecking=no -t -t -R touhoured:22:localhost:22 serveo.net
-          sudo ssh touhoured@ssh-j.com -R touhoured:22:localhost:22 -o StrictHostKeyChecking=no -t -t
+          # ssh -o StrictHostKeyChecking=no -t -t -R touhoured:22:localhost:22 touhoured@ssh-j.com
       - name: wait
         run: |
           sleep inf
